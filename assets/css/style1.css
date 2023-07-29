@@ -1,0 +1,22 @@
+
+#loader{
+    bottom: 0;
+    z-index: 999;
+    transition: 1s;
+}
+.img-loader{
+    width: 24rem;
+    height: 15rem;
+    animation: 4s ease-out 1s infinite reverse both running loader;
+    transition: 1s;
+}
+@keyframes loader {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.active-link1{
+    color: #00FFFF !important;
+}
+

@@ -1,0 +1,35 @@
+/* .eyesicon{
+    padding-top: -40px;
+    z-index: 1;
+    position: absolute;
+    right: 80px;
+    /* top: 1px;  */
+    /* cursor: pointer; */
+
+} */
+
+
+.password-wrapper {
+        position: relative;
+    }
+
+    .password-toggle {
+        padding-right: 30px;
+    }
+
+    .password-toggle .eyesicon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+
+    /* line vertical */
+.vl {
+            border-left: 3px solid gray;
+            opacity: 0.5;
+            border-radius: 10px;
+            height: 500px;
+        }
