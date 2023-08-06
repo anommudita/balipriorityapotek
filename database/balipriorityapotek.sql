@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jul 2023 pada 12.16
+-- Waktu pembuatan: 06 Agu 2023 pada 18.33
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.0.25
 
@@ -31,6 +31,7 @@ CREATE TABLE `form_invoice` (
   `id` int(11) NOT NULL,
   `nomor_invoice` varchar(128) NOT NULL,
   `dokter` int(11) NOT NULL,
+  `no_rekam_medis` varchar(6) NOT NULL,
   `nama_pasien` int(11) NOT NULL,
   `tindakan1` int(11) NOT NULL,
   `diskon1` varchar(128) NOT NULL,
@@ -62,6 +63,14 @@ CREATE TABLE `form_invoice` (
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `form_invoice`
+--
+
+INSERT INTO `form_invoice` (`id`, `nomor_invoice`, `dokter`, `no_rekam_medis`, `nama_pasien`, `tindakan1`, `diskon1`, `harga1`, `tindakan2`, `diskon2`, `harga2`, `tindakan3`, `diskon3`, `harga3`, `tindakan4`, `diskon4`, `harga4`, `tindakan5`, `diskon5`, `harga5`, `jenis_obat`, `jumlah_obat`, `jenis_obat2`, `jumlah_obat2`, `jenis_obat3`, `jumlah_obat3`, `jenis_obat4`, `jumlah_obat4`, `jenis_obat5`, `jumlah_obat5`, `pajak`, `total`, `date_created`) VALUES
+(43, 'BPA-230806909621', 18, '000001', 58, 15, '50', '2500', 0, '0', '0', 0, '0', '0', 0, '0', '0', 0, '0', '0', 21, 2, 23, 1, 0, 0, 0, 0, 0, 0, 10, 85250, '2023-08-06'),
+(44, 'BPA-230806929495', 19, '000006', 59, 15, '50', '2500', 0, '0', '0', 0, '0', '0', 0, '0', '0', 0, '0', '0', 21, 2, 0, 0, 0, 0, 0, 0, 0, 0, 10, 79750, '2023-08-01');
+
 -- --------------------------------------------------------
 
 --
@@ -70,14 +79,26 @@ CREATE TABLE `form_invoice` (
 
 CREATE TABLE `form_pemeriksaan` (
   `id` int(11) NOT NULL,
+  `no_rekam_medis` varchar(6) NOT NULL,
   `nama_pasien` int(11) NOT NULL,
   `nama_dokter` int(11) NOT NULL,
-  `S` varchar(1200) NOT NULL,
-  `O` varchar(1200) NOT NULL,
-  `A` varchar(1200) NOT NULL,
-  `P` varchar(1200) NOT NULL,
+  `S` varchar(2000) NOT NULL,
+  `O` varchar(2000) NOT NULL,
+  `A` varchar(2000) NOT NULL,
+  `P` varchar(2000) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `form_pemeriksaan`
+--
+
+INSERT INTO `form_pemeriksaan` (`id`, `no_rekam_medis`, `nama_pasien`, `nama_dokter`, `S`, `O`, `A`, `P`, `date_created`) VALUES
+(34, '', 54, 18, '1', '1', '1', '1', '2023-07-30'),
+(35, '', 56, 18, 'Subjek', 'Objektif', 'Assement', 'Plan', '2023-07-31'),
+(36, '', 57, 18, 'We\'re operating an entire market,  the business podcast,  the segment of podcasting I think is by far going to be the most valuable is obviously the business podcast because who listens?  It\'s like the most successful people in the world listen because they want to continuously learn because they\'re building empires and they can turn that knowledge into profit.  But they don\'t sit around watching fucking YouTube videos.  They\'re learning,  they\'re using podcasts because they want to learn when their eyes are busy.  And so that\'s what makes it super powerful that a lot of podcasters don\'t actually understand one of the most superpowers of podcasting.', 'We\'re operating an entire market,  the business podcast,  the segment of podcasting I think is by far going to be the most valuable is obviously the business podcast because who listens?  It\'s like the most successful people in the world listen because they want to continuously learn because they\'re building empires and they can turn that knowledge into profit.  But they don\'t sit around watching fucking YouTube videos.  They\'re learning,  they\'re using podcasts because they want to learn when their eyes are busy.  And so that\'s what makes it super powerful that a lot of podcasters don\'t actually understand one of the most superpowers of podcasting.', 'We\'re operating an entire market,  the business podcast,  the segment of podcasting I think is by far going to be the most valuable is obviously the business podcast because who listens?  It\'s like the most successful people in the world listen because they want to continuously learn because they\'re building empires and they can turn that knowledge into profit.  But they don\'t sit around watching fucking YouTube videos.  They\'re learning,  they\'re using podcasts because they want to learn when their eyes are busy.  And so that\'s what makes it super powerful that a lot of podcasters don\'t actually understand one of the most superpowers of podcasting.', 'We\'re operating an entire market,  the business podcast,  the segment of podcasting I think is by far going to be the most valuable is obviously the business podcast because who listens?  It\'s like the most successful people in the world listen because they want to continuously learn because they\'re building empires and they can turn that knowledge into profit.  But they don\'t sit around watching fucking YouTube videos.  They\'re learning,  they\'re using podcasts because they want to learn when their eyes are busy.  And so that\'s what makes it super powerful that a lot of podcasters don\'t actually understand one of the most superpowers of podcasting.', '2023-07-31'),
+(38, '000001', 58, 18, 'test2', 'test2', 'test2', 'test2', '2023-08-06'),
+(40, '000006', 59, 19, 'ABCDEF', 'HIJKL', 'KLMNO', 'PQRSTUV', '2023-08-06');
 
 -- --------------------------------------------------------
 
@@ -123,7 +144,8 @@ INSERT INTO `pajak` (`id`, `pajak`, `keterangan`, `date_created`) VALUES
 (0, '0%', '-', '0000-00-00'),
 (9, '0%', 'Gratis karena menggunakan member', '2023-07-16'),
 (10, '10%', 'Pajak PPN', '2023-07-16'),
-(11, '10%', 'Pajak 10%', '2023-07-20');
+(11, '10%', 'Pajak 10%', '2023-07-20'),
+(13, '50%', 'Pajak Mahal Bro!', '2023-07-30');
 
 -- --------------------------------------------------------
 
@@ -132,6 +154,7 @@ INSERT INTO `pajak` (`id`, `pajak`, `keterangan`, `date_created`) VALUES
 --
 
 CREATE TABLE `pasien` (
+  `no_rekam_medis` varchar(6) NOT NULL,
   `nik` varchar(128) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -141,6 +164,18 @@ CREATE TABLE `pasien` (
   `no_telepon` varchar(128) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `pasien`
+--
+
+INSERT INTO `pasien` (`no_rekam_medis`, `nik`, `nama`, `tanggal_lahir`, `umur`, `jenis_kelamin`, `alamat`, `no_telepon`, `date_created`) VALUES
+('000003', '5108062401020001', 'Anom Mudita', '2002-01-24', '21 tahun 7 bulan', 'Perempuan', 'Street Kutilang number 10', '12345', '2023-08-06'),
+('000004', '5108062401020002', 'Test hari ini', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'jalan kenari no 9 kaliuntu', '123', '2023-08-06'),
+('000001', '5108062401020003', 'Anom Mudita', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'Street Kutilang number 10', '087715842117', '2023-08-06'),
+('000002', '5108062401020005', 'Gede Jayadi', '2002-06-03', '21 tahun 1 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', '2023-07-30'),
+('000005', '5108062401020006', 'test 05', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'Street Kutilang number 10', '087715842117', '2023-08-06'),
+('000006', '5108062401020009', 'Test 8', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', '2023-08-06');
 
 -- --------------------------------------------------------
 
@@ -164,6 +199,18 @@ CREATE TABLE `record_pasien` (
   `status_periksa` int(11) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `record_pasien`
+--
+
+INSERT INTO `record_pasien` (`id`, `no_rm`, `nik`, `nama`, `tanggal_lahir`, `umur`, `jenis_kelamin`, `alamat`, `no_tlp`, `dokter`, `status`, `status_invoice`, `status_periksa`, `date_created`) VALUES
+(54, 'BPA-23073064c66e7a873bb', '5108062401020005', 'Gede Jayadi', '2002-06-03', '21 tahun 1 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', 18, 3, 1, 1, '2023-07-30'),
+(55, 'BPA-23073064c66e9fc3974', '5108062401020005', 'Gede Jayadi', '2002-06-03', '21 tahun 1 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', 18, 0, 0, 0, '2023-07-30'),
+(56, 'BPA-23073164c6fed82bd4b', '5108062401020005', 'Gede Jayadi', '2002-06-03', '21 tahun 1 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', 18, 3, 1, 1, '2023-07-31'),
+(57, 'BPA-23073164c71aae85643', '5108062401020005', 'Gede Jayadi', '2002-06-03', '21 tahun 1 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', 18, 3, 1, 1, '2023-08-06'),
+(58, 'BPA-23080664cf208cd9d6d', '5108062401020003', 'Anom Mudita', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'Street Kutilang number 10', '087715842117', 18, 3, 2, 2, '2023-08-07'),
+(59, 'BPA-23080664cf75458dfce', '5108062401020009', 'Test 8', '2002-01-24', '21 tahun 7 bulan', 'Laki-laki', 'Jalan Setia Budi, Banyuning Timur', '087715842117', 19, 3, 1, 1, '2023-08-07');
 
 -- --------------------------------------------------------
 
@@ -211,9 +258,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `role_id`, `nama`, `username`, `password`, `status`, `foto`, `date_created`) VALUES
-(1, 1, 'Admin', 'admin', '$2y$10$.fwrPQZbpv7KKeRq2L6oDugJoKeQ2bhnF4Agfi.tCk4QW8KOLfBUm', 0, 'default.png', '2023-07-08'),
-(18, 2, 'Dokter A', 'doktera', '$2y$10$iKvRPJIMQSNHIBo8r50CB.DmqSC9JWAQyhL4iHSR5KWfe.Kay7DO6', 1, 'default.png', '2023-07-20'),
-(19, 2, 'Dokter B', 'dokterb', '$2y$10$zu9yFk2LQSqOnen5U6el1e1P6t9kjmrk0zyJotuC0qfzgbX/Wmq5O', 0, 'default.png', '2023-07-15'),
+(1, 1, 'Admin', 'admin', '$2y$10$.fwrPQZbpv7KKeRq2L6oDugJoKeQ2bhnF4Agfi.tCk4QW8KOLfBUm', 1, 'default.png', '2023-07-08'),
+(18, 2, 'Dokter A', 'doktera', '$2y$10$iKvRPJIMQSNHIBo8r50CB.DmqSC9JWAQyhL4iHSR5KWfe.Kay7DO6', 0, 'default.png', '2023-07-20'),
+(19, 2, 'Dokter B', 'dokterb', '$2y$10$zu9yFk2LQSqOnen5U6el1e1P6t9kjmrk0zyJotuC0qfzgbX/Wmq5O', 1, 'default.png', '2023-07-15'),
 (20, 2, 'Dokter C', 'dokterc', '$2y$10$cfnkAGALtoKWjwH5z1R4duguM8fqzHb3GNs28ACkYfDC.otCdxgEa', 0, 'default.png', '2023-07-15'),
 (21, 2, 'Dokter D', 'dokterd', '$2y$10$zHt5me22T5YpIGuN2j/z3eCkEVtBFrCdK3SHEzFg8RPEGokgl76tO', 0, 'default.png', '2023-07-15'),
 (22, 2, 'Dokter E', 'doktere', '$2y$10$rXHNfcfeE8U/glJhkV1TyuRXo4P9kAQ4WC8hZiJ0Z.EfiNSDUY4GK', 0, 'default.png', '2023-07-18');
@@ -321,13 +368,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `form_invoice`
 --
 ALTER TABLE `form_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT untuk tabel `form_pemeriksaan`
 --
 ALTER TABLE `form_pemeriksaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis_obat`
@@ -339,13 +386,13 @@ ALTER TABLE `jenis_obat`
 -- AUTO_INCREMENT untuk tabel `pajak`
 --
 ALTER TABLE `pajak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `record_pasien`
 --
 ALTER TABLE `record_pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT untuk tabel `tindakan`

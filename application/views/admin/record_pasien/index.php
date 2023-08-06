@@ -98,7 +98,7 @@
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
-                                                    <th style="width:15%">NIK</th>
+                                                    <th style="width:15%">Nomor Rekam Medis</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -110,7 +110,7 @@
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
-                                                    <th style="width:15%">NIK</th>
+                                                    <th style="width:15%">Nomor Rekam Medis</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -133,7 +133,7 @@
                                                         <td><?= $i++ ?></td>
                                                         <td><?= $row['no_rm']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
-                                                        <td><?= $row['nik']; ?></td>
+                                                        <td><?= $row['no_rekam_medis']; ?></td>
                                                         <td>
                                                             <?= $row['no_tlp'] ?>
                                                         </td>
@@ -168,7 +168,8 @@
                                                                                     <li class="list-group-item">
                                                                                         <h3><?= $row['nama'] ?></h3>
                                                                                     </li>
-                                                                                    <li class="list-group-item"> No.Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Rekam Medis : <?= $row['no_rekam_medis']; ?></li>
                                                                                     <li class="list-group-item"> NIK : <?= $row['nik'] ?></li>
                                                                                     <li class="list-group-item"> Tanggal Lahir : <?= $row['tanggal_lahir'] ?></li>
                                                                                     <li class="list-group-item"> Umur : <?= $row['umur'] ?></li>

@@ -19,11 +19,11 @@
         }
 
         .text1 {
-            font-size: 13px;
+            font-size: 11px;
         }
 
         .text2 {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .text3 {
@@ -81,30 +81,37 @@
     <!-- Data pasien -->
     <div class="col">
         <table width="100%" align="center">
-            <tr>
-                <td style="width: 30%;">No Riwayat</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['no_rm'] ?></td>
+            <table width="100%" align="center">
+                <tr>
+                    <td style="width: 30%;" class="text2">No Riwayat</td>
+                    <td style="width: 3%;" class="text2">:</td>
+                    <td class="text2"><?= $pemeriksaan['no_rm'] ?></td>
 
-            </tr>
-            <tr>
-                <td style="width: 30%;">Nama Pasien</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['nama_pasien'] ?></td>
-            </tr>
-        </table>
-        <table width="100%">
-            <tr>
-                <td style="width: 30%;">Tanggal Periksa</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $tanggal_pemeriksaan ?></td>
-            </tr>
-            <tr>
+                </tr>
+                <tr>
+                    <td style="width: 30%;" class="text2">No Rekam Medis</td>
+                    <td style="width: 3%;" class="text2">:</td>
+                    <td class="text2"><?= $pemeriksaan['no_rekam_medis'] ?></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;" class="text2">Nama Pasien</td>
+                    <td style="width: 3%;" class="text2">:</td>
+                    <td class="text2"><?= $pemeriksaan['nama_pasien'] ?></td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td style="width: 30%;" class="text2">Tanggal Periksa</td>
+                    <td style="width: 3%;" class="text2">:</td>
+                    <td class="text2"><?= $tanggal_pemeriksaan ?></td>
+                </tr>
+                <tr>
 
-                <td style="width: 30%;">Dokter</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['nama_dokter'] ?></td>
-            </tr>
+                    <td style="width: 30%;" class="text2">Dokter</td>
+                    <td style="width: 3%;" class="text2">:</td>
+                    <td class="text2"><?= $pemeriksaan['nama_dokter'] ?></td>
+                </tr>
+            </table>
         </table>
     </div>
     <div class="div"></div>

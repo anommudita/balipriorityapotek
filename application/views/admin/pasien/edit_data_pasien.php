@@ -10,7 +10,13 @@
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4 p-4 col-12 col-lg-8">
                                 <!-- <form action="" method="post"> -->
-                                <?= form_open_multipart('admin/edit_data_pasien/'. $pasien['nik']) ?>
+                                <?= form_open_multipart('admin/edit_data_pasien/' . $pasien['nik']) ?>
+
+                                <!-- No Rekaman Medis -->
+                                <div class="form-group">
+                                    <label for="no_rekam_medis">Nomor Rekam Medis</label>
+                                    <input type="number" class="form-control" id="no_rekam_medis" name="no_rekam_medis" value="<?= $pasien['no_rekam_medis'] ?>" readonly>
+                                </div>
 
                                 <!-- NIK -->
                                 <div class="form-group">
@@ -65,7 +71,7 @@
                                 <!-- Alamat -->
                                 <div class="form-group">
                                     <label for="alamat_pasien">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat_pasien" name="alamat_pasien" value="<?= $pasien['alamat']?>" placeholder="Masukan alamat pasien">
+                                    <input type="text" class="form-control" id="alamat_pasien" name="alamat_pasien" value="<?= $pasien['alamat'] ?>" placeholder="Masukan alamat pasien">
                                     <!-- notif error -->
                                     <?= form_error('alamat_pasien', '<small class="text-danger pl-3">', '</small'); ?>
                                 </div>

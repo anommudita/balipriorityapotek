@@ -120,27 +120,28 @@ class Dokter extends CI_Controller{
 
         $data['pemeriksaan'] = $this->form_pemeriksaan->get_all_form_pemeriksaan_by_id($id);
 
+        // mengubah tanggal format dari database menjadi format indonesia
+        $tanggal_awal = $data['pemeriksaan']['date_created'];
+        // / Ubah format tanggal menggunakan fungsi PHP
+        $tanggal_datetime = date_create($tanggal_awal);
+        $hari_indonesia = $this->getHariIndonesia(date_format($tanggal_datetime, 'N'));
+        // $tanggal_bulan_tahun_indonesia = date_format($tanggal_datetime, 'd F Y');
+        $tanggal_bulan_tahun_indonesia = date_format($tanggal_datetime, 'd ') . $this->getBulanIndonesia(date_format($tanggal_datetime, 'n')) . date_format($tanggal_datetime, ' Y');
 
-        // Tanggal dalam format 'Ymd' (2023-Jul-Sat)
-        $dateString = $data['pemeriksaan']['date_created'];
-
-        // Mengubah format tanggal menjadi 'Y-m-d' (2023-07-22)
-        $timestamp = strtotime($dateString);
-        $dateFormatted = date('Y-m-d', $timestamp);
-
-        // Mengubah format tanggal menjadi 'Y F l' (2023 Juli Sabtu)
-        $dateFinalFormatted = date('l, d F Y', $timestamp);
-
-        $data['tanggal_pemeriksaan'] =  $dateFinalFormatted; // Output: 2023 Juli Sabtu
+        // Gabungkan hasilnya
+        $data['tanggal_pemeriksaan'] = "{$hari_indonesia}, {$tanggal_bulan_tahun_indonesia}";
 
 
-        // Mendapatkan tanggal sekarang
-        $tanggal = Carbon::now()->locale('id_ID');
+        // default waktu
+        date_default_timezone_set("Asia/Singapore");
+        $date_now = date('Y/m/d');
+        // / Ubah format tanggal menggunakan fungsi PHP
+        $tanggal_datetime1 = date_create($date_now);
+        $hari_indonesia1 = $this->getHariIndonesia(date_format($tanggal_datetime1, 'N'));
+        // $tanggal_bulan_tahun_indonesia = date_format($tanggal_datetime, 'd F Y');
+        $tanggal_bulan_tahun_indonesia1 = date_format($tanggal_datetime1, 'd ') . $this->getBulanIndonesia(date_format($tanggal_datetime1, 'n')) . date_format($tanggal_datetime1, ' Y');
+        $data['tanggal'] = "{$hari_indonesia1}, {$tanggal_bulan_tahun_indonesia1}";
 
-        // Format tanggal dengan bahasa Indonesia: "Selasa, 18 Juli 2023"
-        $tanggal_format = $tanggal->isoFormat('dddd, D MMMM YYYY');
-
-        $data['tanggal'] = $tanggal_format;
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
@@ -160,6 +161,41 @@ class Dokter extends CI_Controller{
 
         // Output the generated PDF to Browser
         $dompdf->stream('Form Pemeriksaan ' . $data['pemeriksaan']['nama_pasien'] . '.pdf', array('Attachment' => 0));
+    }
+    
+    // function get hari indonesia
+    private function getHariIndonesia($dayNumber)
+    {
+        $hari = [
+            '1' => 'Senin',
+            '2' => 'Selasa',
+            '3' => 'Rabu',
+            '4' => 'Kamis',
+            '5' => 'Jumat',
+            '6' => 'Sabtu',
+            '7' => 'Minggu',
+        ];
+        return $hari[$dayNumber];
+    }
+
+    // function get bulan indonesia
+    private function getBulanIndonesia($monthNumber)
+    {
+        $bulan = [
+            '1' => 'Januari',
+            '2' => 'Februari',
+            '3' => 'Maret',
+            '4' => 'April',
+            '5' => 'Mei',
+            '6' => 'Juni',
+            '7' => 'Juli',
+            '8' => 'Agustus',
+            '9' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        return $bulan[$monthNumber];
     }
 
 

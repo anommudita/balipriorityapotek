@@ -81,28 +81,33 @@
     <div class="col">
         <table width="100%" align="center">
             <tr>
-                <td style="width: 30%;">No Riwayat</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['no_rm'] ?></td>
+                <td style="width: 30%;" class="text2">No Riwayat</td>
+                <td style="width: 3%;" class="text2">:</td>
+                <td class="text2"><?= $pemeriksaan['no_rm'] ?></td>
 
             </tr>
             <tr>
-                <td style="width: 30%;">Nama Pasien</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['nama_pasien'] ?></td>
+                <td style="width: 30%;"class="text2">No Rekam Medis</td>
+                <td style="width: 3%;"class="text2">:</td>
+                <td class="text2"><?= $pemeriksaan['no_rekam_medis'] ?></td>
+            </tr>
+            <tr>
+                <td style="width: 30%;" class="text2">Nama Pasien</td>
+                <td style="width: 3%;" class="text2">:</td>
+                <td class="text2"><?= $pemeriksaan['nama_pasien'] ?></td>
             </tr>
         </table>
         <table width="100%">
             <tr>
-                <td style="width: 30%;">Tanggal Periksa</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $tanggal_pemeriksaan ?></td>
+                <td style="width: 30%;" class="text2">Tanggal Periksa</td>
+                <td style="width: 3%;" class="text2">:</td>
+                <td class="text2"><?= $tanggal_pemeriksaan ?></td>
             </tr>
             <tr>
 
-                <td style="width: 30%;">Dokter</td>
-                <td style="width: 3%;">:</td>
-                <td><?= $pemeriksaan['nama_dokter'] ?></td>
+                <td style="width: 30%;" class="text2">Dokter</td>
+                <td style="width: 3%;" class="text2">:</td>
+                <td class="text2"><?= $pemeriksaan['nama_dokter'] ?></td>
             </tr>
         </table>
     </div>
@@ -122,15 +127,15 @@
         </tr>
         <tr>
             <td style="width: 18%;" class="text-center bold">Objektif</td>
-            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['S'] ?></td>
+            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['O'] ?></td>
         </tr>
         <tr>
             <td style="width: 18%;" class="text-center bold">Assesment</td>
-            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['S'] ?></td>
+            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['A'] ?></td>
         </tr>
         <tr>
             <td style="width: 18%;" class="text-center bold">Plan</td>
-            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['S'] ?></td>
+            <td style="width: 82%;" class="text1">&nbsp;<?= $pemeriksaan['P'] ?></td>
         </tr>
     </table>
 

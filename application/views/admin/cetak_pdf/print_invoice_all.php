@@ -48,6 +48,7 @@
                 <th>
                     Nomor Invoice
                 </th>
+                <th>No Rekam Medis</th>
                 <th>Nama</th>
                 <th>Dokter</th>
                 <th>Tanggal</th>
@@ -59,18 +60,20 @@
         </thead>
         <tbody>
 
-            <?php $i = 1; $seluruh_total= 0;?>
+            <?php $i = 1;
+            $seluruh_total = 0; ?>
             <?php foreach ($all_invoice as $row) : ?>
                 <tr>
                     <td><?= $i++ ?></td>
                     <td><?= $row['nomor_invoice'] ?></td>
+                    <td><?= $row['no_rekam_medis'] ?></td>
                     <td><?= $row['nama_pasien'] ?></td>
                     <td><?= $row['nama_dokter'] ?></td>
                     <td><?= $row['date_created'] ?></td>
                     <td><?= $row['harga1'] + $row['harga2'] + $row['harga3'] + $row['harga4'] + $row['harga5'] ?></td>
-                    <td><?= $row['harga_obat'] + $row['harga_obat2'] + $row['harga_obat3'] + $row['harga_obat4'] + $row['harga_obat5']?></td>
+                    <td><?= $row['harga_obat'] + $row['harga_obat2'] + $row['harga_obat3'] + $row['harga_obat4'] + $row['harga_obat5'] ?></td>
                     <td><?= $row['pajak'] ?></td>
-                    <td><?=$row['total']?></td>
+                    <td><?= $row['total'] ?></td>
                 </tr>
                 <?php $seluruh_total += $row['total']; ?>
             <?php endforeach; ?>
@@ -79,7 +82,7 @@
     <table border="1" width="100%">
         <tr>
             <td style="width: 67%;">Total Keseluruhan</td>
-            <td style="width: 33%;"><?=$seluruh_total;?></td>
+            <td style="width: 33%;"><?= $seluruh_total; ?></td>
         </tr>
     </table>
 </body>

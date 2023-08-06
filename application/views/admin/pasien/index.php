@@ -89,6 +89,7 @@
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
+                                                    <th style="width:15%">Nomor Rekam Medis</th>
                                                     <th style="width:8%">NIK</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:8%">No Telepon</th>
@@ -99,6 +100,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th style="width:5%">No</th>
+                                                    <th style="width:15%">Nomor Rekam Medis</th>
                                                     <th style="width:8%">NIK</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:8%">No Telepon</th>
@@ -120,6 +122,7 @@
                                                 <?php foreach ($all_pasien as $row) : ?>
                                                     <tr>
                                                         <td><?= $i++ ?></td>
+                                                        <td><?= $row['no_rekam_medis'] ?></td>
                                                         <td><?= $row['nik']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
                                                         <td><?= $row['no_telepon']; ?></td>
@@ -151,6 +154,7 @@
                                                                                     <li class="list-group-item">
                                                                                         <h3><?= $row['nama'] ?></h3>
                                                                                     </li>
+                                                                                    <li class="list-group-item"> Nomor Rekam Medis : <?= $row['no_rekam_medis'] ?></li>
                                                                                     <li class="list-group-item"> NIK : <?= $row['nik'] ?></li>
                                                                                     <li class="list-group-item"> Tanggal Lahir : <?= $row['tanggal_lahir'] ?></li>
                                                                                     <li class="list-group-item"> Umur : <?= $row['umur'] ?></li>

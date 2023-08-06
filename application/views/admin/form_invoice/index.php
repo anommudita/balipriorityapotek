@@ -84,6 +84,7 @@
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Invoice</th>
+                                                    <th hidden>Nomor Rekam Medis</th>
                                                     <th style="width:13%">Nama</th>
                                                     <th style="width:18%">Dokter</th>
                                                     <th>Tanggal</th>
@@ -98,6 +99,7 @@
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Invoice</th>
+                                                    <th hidden>Nomor Rekam Medis</th>
                                                     <th style="width:20%">Nama</th>
                                                     <th>Dokter</th>
                                                     <th>Tanggal</th>
@@ -123,6 +125,7 @@
                                                     <tr>
                                                         <td><?= $i++ ?></td>
                                                         <td><?= $row['nomor_invoice']; ?></td>
+                                                        <td hidden><?= $row['no_rekam_medis']; ?></td>
                                                         <td><?= $row['nama_pasien']; ?></td>
                                                         <td>
                                                             <?= $row['nama_dokter'] ?>
@@ -148,7 +151,7 @@
                                                                 <?php if ($row['status'] == 3) : ?>
                                                                     <a href="<?= base_url() ?>admin/print_invoice_by_admin/<?= $row['id']; ?>" class="btn btn-secondary mr-2" target="_blank">Print</a>
                                                                 <?php else : ?>
-                                                                    <a href="#" class="btn btn-secondary mr-2 notif-invoice">Invoice</a>
+                                                                    <a href="#" class="btn btn-secondary mr-2 notif-invoice">Print</a>
                                                                 <?php endif; ?>
 
 
@@ -176,6 +179,7 @@
                                                                                         <h3><?= $row['nama_pasien'] ?></h3>
                                                                                     </li>
                                                                                     <li class="list-group-item"> Riwayat Invoice : <?= $row['nomor_invoice']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Rekam Medis : <?= $row['no_rekam_medis']; ?></li>
                                                                                     <li class="list-group-item"> NIK : <?= $row['nik'] ?></li>
                                                                                     <li class="list-group-item"> Tanggal Lahir : <?= $row['tanggal_lahir'] ?></li>
                                                                                     <li class="list-group-item"> Umur : <?= $row['umur'] ?></li>

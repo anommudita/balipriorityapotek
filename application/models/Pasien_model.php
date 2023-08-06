@@ -4,9 +4,10 @@ class Pasien_model extends CI_Model{
     // get all data data pasien
     public function get_all_data_pasien()
     {
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin, pasien.no_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
+        $this->db->join('pasien', 'record_pasien.nik = pasien.nik');
         $query = $this->db->get();
         return $query;
     }
@@ -16,9 +17,10 @@ class Pasien_model extends CI_Model{
     // get all data data pasien by dokter
     public function get_record_pasien_by_dokter($id_dokter)
     {
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin, pasien.no_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
+        $this->db->join('pasien', 'record_pasien.nik = pasien.nik');
         $this->db->where('record_pasien.dokter', $id_dokter);
         $query = $this->db->get();
         return $query;
@@ -87,9 +89,10 @@ class Pasien_model extends CI_Model{
         // default waktu
         date_default_timezone_set("Asia/Singapore");
 
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.status, record_pasien.date_created,record_pasien.jenis_kelamin');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.status, record_pasien.date_created,record_pasien.jenis_kelamin, pasien.no_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
+        $this->db->join('pasien', 'record_pasien.nik = pasien.nik');
         $this->db->where('record_pasien.date_created', date('Y-m-d'));
         $query = $this->db->get();
         return $query->result_array();
@@ -114,9 +117,10 @@ class Pasien_model extends CI_Model{
         // default waktu
         date_default_timezone_set("Asia/Singapore");
 
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.status, record_pasien.date_created, record_pasien.jenis_kelamin, record_pasien.status_periksa as status_periksa, record_pasien.status_invoice as status_invoice');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.status, record_pasien.date_created, record_pasien.jenis_kelamin, record_pasien.status_periksa as status_periksa, record_pasien.status_invoice as status_invoice, pasien.no_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
+        $this->db->join('pasien', 'record_pasien.nik = pasien.nik');
         $this->db->where('record_pasien.date_created', date('Y-m-d'));
         $this->db->where('record_pasien.dokter', $id_dokter);
         return $query = $this->db->get();
@@ -142,9 +146,10 @@ class Pasien_model extends CI_Model{
     // get data pasien by id
     public function get_data_pasien_by_id($id)
     {
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, user.id as id_dokter, record_pasien.nama as nama_pasien, record_pasien.id as id_pasien, record_pasien.jenis_kelamin');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, user.id as id_dokter, record_pasien.nama as nama_pasien, record_pasien.id as id_pasien, record_pasien.jenis_kelamin, pasien.no_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
+        $this->db->join('pasien', 'record_pasien.nik = pasien.nik');
         $this->db->where('record_pasien.id', $id);
         $query = $this->db->get();
         return $query->row_array();

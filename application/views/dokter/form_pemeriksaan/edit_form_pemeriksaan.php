@@ -12,17 +12,13 @@
                                 <!-- <form action="" method="post"> -->
                                 <?= form_open_multipart('dokter/edit_form_pemeriksaan/' . $form_pemeriksaan['id']) ?>
 
-                                <!-- Nama Pasien -->
-                                <!-- <div class="form-group">
-                                    <label for="nama_pasien">Nama Pasien</label>
-                                    <select class="form-control" id="nama_pasien" name="nama_pasien">
-                                        <option value="<?= $form_pemeriksaan['id_pasien'] ?>"><?= $form_pemeriksaan['nama_pasien'] ?></option>
-                                        <?php foreach ($nama_pasien_not_id as $row) : ?>
-                                            <option value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <?= form_error('nama_pasien', '<small class="text-danger pl-3">', '</small'); ?>
-                                </div> -->
+
+                                <!-- Nomor Rekam Medis -->
+                                <div class="form-group">
+                                    <label for="no_rekam_medis">Nomor Rekam Medis</label>
+                                    <input class="form-control" type="text" id="no_rekam_medis" name="no_rekam_medis" value="<?= $pasien['no_rekam_medis']; ?>" readonly>
+                                </div>
+
 
                                 <div class="form-group">
                                     <label for="nama_pasien">Nama Pasien</label>

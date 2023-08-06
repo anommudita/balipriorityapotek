@@ -145,6 +145,12 @@
                                                 <input type="text" class="form-control" id="nama_pasien" name="nama_pasien" value="<?= $pasien['nama_pasien'] ?>" readonly>
                                             </div>
 
+                                            <!-- Nomor Rekam Medis -->
+                                            <div class="form-group">
+                                                <label for="no_rekam_medis" hidden>Nomor Rekam Medis</label>
+                                                <input class="form-control" type="text" id="no_rekam_medis" name="no_rekam_medis" value="<?= $pasien['no_rekam_medis']; ?>" hidden>
+                                            </div>
+
 
                                             <div class="col mt-5">
                                                 <!-- button -->

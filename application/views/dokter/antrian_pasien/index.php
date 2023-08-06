@@ -75,7 +75,7 @@
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:18%">Nama</th>
-                                                    <th style="width:18%">NIK</th>
+                                                    <th style="width:18%">Nomor Rekam Medis</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Status</th>
                                                     <th style="width:15%">Aksi</th>
@@ -86,7 +86,7 @@
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:18%">Nama</th>
-                                                    <th style="width:18%">NIK</th>
+                                                    <th style="width:18%">Nomo Rekam Medis</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Status</th>
                                                     <th style="width:15%">Aksi</th>
@@ -108,11 +108,11 @@
                                                         <td><?= $i++ ?></td>
                                                         <td><?= $row['no_rm']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
-                                                        <td><?= $row['nik']; ?></td>
+                                                        <td><?= $row['no_rekam_medis']; ?></td>
                                                         <td><?= $row['date_created']; ?></td>
                                                         <td>
-                                                            <?php if ($row['status'] == 0): ?>
-                                                            <i class="fa-solid fa-circle fa-beat" style="color:  #e74a3b;"></i> Menunggu
+                                                            <?php if ($row['status'] == 0) : ?>
+                                                                <i class="fa-solid fa-circle fa-beat" style="color:  #e74a3b;"></i> Menunggu
                                                             <?php endif; ?>
                                                             <?php if ($row['status'] == 1) : ?>
                                                                 <i class="fa-solid fa-circle fa-beat" style="color:  #ebbd34;"></i> Sedang Proses
@@ -129,7 +129,7 @@
                                                             <div class="d-flex flex-row">
                                                                 <a href="#" class="btn btn-success mr-2" data-toggle="modal" data-target="#detailModal<?= $row['id']; ?>" id="tombol-detail">Detail</a>
 
-                                                                
+
                                                                 <a href="#" class="btn btn-<?= $row['status'] == 3 ? 'success' : 'secondary'; ?> mr-2" data-id="<?= $row['id']; ?>" data-toggle="modal" data-target="#pemeriksaan<?= $row['id']; ?>">Pemeriksaan</a>
                                                                 <a href="#" class="btn btn-<?= $row['status'] == 3 ? 'success' : 'secondary'; ?> mr-2" data-id="<?= $row['id']; ?>" data-toggle="modal" data-target="#invoice<?= $row['id']; ?>">Invoice</a>
                                                                 <a href="<?= base_url(); ?>dokter/change_status/<?= $row['id']; ?>" class="btn btn-primary change-status mr-2" data-id="<?= $row['id']; ?>">Selesai</a>
@@ -155,7 +155,8 @@
                                                                                     <li class="list-group-item">
                                                                                         <h3><?= $row['nama'] ?></h3>
                                                                                     </li>
-                                                                                    <li class="list-group-item"> No.Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Rekam Medis : <?= $row['no_rekam_medis']; ?></li>
                                                                                     <li class="list-group-item"> NIK : <?= $row['nik'] ?></li>
                                                                                     <li class="list-group-item"> Tanggal Lahir : <?= $row['tanggal_lahir'] ?></li>
                                                                                     <li class="list-group-item"> Umur : <?= $row['umur'] ?></li>

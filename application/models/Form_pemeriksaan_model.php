@@ -6,7 +6,7 @@ class Form_pemeriksaan_model extends CI_Model{
     // get all data form pemeriksaan join table pasien dan dokter 
     public function get_all_form_pemeriksaan($id_dokter)
     {
-        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien,record_pasien.nama as nama_pasien, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm, record_pasien.nik as nik' );
+        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien,record_pasien.nama as nama_pasien, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm, record_pasien.nik as nik, form_pemeriksaan.no_rekam_medis, record_pasien.status as status' );
         $this->db->from('form_pemeriksaan');
         $this->db->join('record_pasien', 'form_pemeriksaan.nama_pasien = record_pasien.id');
         $this->db->join('user', 'form_pemeriksaan.nama_dokter = user.id');
@@ -18,7 +18,7 @@ class Form_pemeriksaan_model extends CI_Model{
     // form pemeriksaan by id
     public function get_all_form_pemeriksaan_by_id($id)
     {
-        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien, record_pasien.nama as nama_pasien, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm');
+        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien, record_pasien.nama as nama_pasien, record_pasien.status as status, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm, form_pemeriksaan.no_rekam_medis,');
         $this->db->from('form_pemeriksaan');
         $this->db->join('record_pasien', 'form_pemeriksaan.nama_pasien = record_pasien.id');
         $this->db->join('user', 'form_pemeriksaan.nama_dokter = user.id');
@@ -31,7 +31,7 @@ class Form_pemeriksaan_model extends CI_Model{
     // form pemeriksaan by id
     public function get_all_form_pemeriksaan_by_id_pasien($id_pasien)
     {
-        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien, record_pasien.nama as nama_pasien, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm');
+        $this->db->select(' form_pemeriksaan.id, form_pemeriksaan.S, form_pemeriksaan.O, form_pemeriksaan.A, form_pemeriksaan.P, form_pemeriksaan.date_created, record_pasien.id as id_pasien, record_pasien.nama as nama_pasien, user.nama as nama_dokter, user.id as id_dokter, record_pasien.no_rm as no_rm, form_pemeriksaan.no_rekam_medis');
         $this->db->from('form_pemeriksaan');
         $this->db->join('record_pasien', 'form_pemeriksaan.nama_pasien = record_pasien.id');
         $this->db->join('user', 'form_pemeriksaan.nama_dokter = user.id');
@@ -48,6 +48,7 @@ class Form_pemeriksaan_model extends CI_Model{
         date_default_timezone_set("Asia/Singapore");
 
         $data = [
+            'no_rekam_medis' => $this->input->post('no_rekam_medis', true),
             'nama_pasien' => $id_pasien,
             'nama_dokter' => $id_dokter,
             'S' => $this->input->post('subjektif', true),
@@ -66,6 +67,7 @@ class Form_pemeriksaan_model extends CI_Model{
         // default waktu
         date_default_timezone_set("Asia/Singapore");
         $data = [
+            'no_rekam_medis' => $this->input->post('no_rekam_medis', true),
             'nama_pasien' => $id_pasien,
             'nama_dokter' => $id_dokter,
             'S' => $this->input->post('subjektif', true),

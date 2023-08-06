@@ -11,6 +11,13 @@
                             <div class="card shadow mb-4 p-4 col-12 col-lg-8">
                                 <!-- <form action="" method="post"> -->
                                 <?= form_open_multipart('dokter/tambah_form_pemeriksaan/' . $pasien['id']); ?>
+
+                                <!-- Nomor Rekam Medis -->
+                                <div class="form-group">
+                                    <label for="no_rekam_medis">Nomor Rekam Medis</label>
+                                    <input class="form-control" type="text" id="no_rekam_medis" name="no_rekam_medis" value="<?= $pasien['no_rekam_medis']; ?>" readonly>
+                                </div>
+
                                 <!-- Nama Pasien -->
                                 <div class="form-group">
                                     <label for="nama_pasien">Nama Pasien</label>
@@ -66,7 +73,7 @@
 
                                 <div class="form-group">
                                     <label for="dokter">Pemeriksa</label>
-                                    <input class="form-control" type="text" id="dokter" name="dokter" value="<?=$pasien['nama_dokter']?>" readonly>
+                                    <input class="form-control" type="text" id="dokter" name="dokter" value="<?= $pasien['nama_dokter'] ?>" readonly>
                                     <?= form_error('dokter', '<small class="text-danger pl-3">', '</small'); ?>
                                 </div>
 

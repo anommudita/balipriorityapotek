@@ -12,6 +12,12 @@
                                 <!-- <form action="" method="post"> -->
                                 <?= form_open_multipart('admin/tambah_data_pasien') ?>
 
+                                <!-- Nomor Rekam Medis -->
+                                <div class="form-group">
+                                    <label for="no_rekam_medis">Nomor Rekam Medis</label>
+                                    <input type="number" class="form-control" id="no_rekam_medis" name="no_rekam_medis" value="<?=$no_rekam_medis?>"  readonly>
+                                </div>
+
                                 <!-- NIK -->
                                 <div class="form-group">
                                     <label for="nik_pasien">NIK</label>

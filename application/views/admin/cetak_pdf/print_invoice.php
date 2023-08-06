@@ -35,7 +35,7 @@
         }
 
         .text2 {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .text3 {
@@ -76,6 +76,12 @@
                 <td style="width: 30%;">Kode Invoice</td>
                 <td style="width: 3%;">:</td>
                 <td><?= $invoice['nomor_invoice'] ?></td>
+
+            </tr>
+            <tr class="text2">
+                <td style="width: 30%;">No Rekam Medis</td>
+                <td style="width: 3%;">:</td>
+                <td><?= $invoice['no_rekam_medis'] ?></td>
 
             </tr>
             <tr class="text2">
@@ -254,7 +260,7 @@
     <!-- terima kasih -->
     <!-- <br> -->
     <table width="100%">
-        <tr class="text-center">
+        <tr class="text-center text3">
             <td>
                 Terima Kasih!
             </td>

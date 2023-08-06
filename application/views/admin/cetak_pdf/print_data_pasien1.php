@@ -45,6 +45,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>No Rekam Medis</th>
                 <th>NIK</th>
                 <th>Nama</th>
                 <th>Tanggal Lahir</th>
@@ -60,6 +61,7 @@
             <?php foreach ($all_pasien as $row) : ?>
                 <tr>
                     <td><?= $i++ ?></td>
+                    <td><?= $row['no_rekam_medis'] ?></td>
                     <td><?= $row['nik'] ?></td>
                     <td><?= $row['nama'] ?></td>
                     <td><?= $row['tanggal_lahir'] ?></td>
