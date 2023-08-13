@@ -85,7 +85,22 @@
                                             </div>
                                         <?php endif; ?>
 
-                                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                                        <!-- Data tidak ditemukan -->
+                                        <?php if (empty($all_pasien)) : ?>
+                                            <div class="col">
+                                                <div class="row mt-2">
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">Data pasien tidak ditemukan!
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+
+
+
+                                        <table class="table table-striped table-bordered" id="myTable" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
@@ -109,15 +124,6 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_pasien)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_pasien as $row) : ?>
                                                     <tr>
@@ -252,7 +258,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Print By Tanggal</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Print By NIK</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

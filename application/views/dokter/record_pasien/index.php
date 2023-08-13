@@ -68,12 +68,26 @@
                                                 </div>
                                             <?php endif; ?>
 
+                                            <!-- Notif Data Tidak Ditemukan -->
+                                            <?php if (empty($all_pasien)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data record pasien tidak ditemukan!
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:15%">NIK</th>
+                                                    <th hidden>no_rekam_medis</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -86,6 +100,7 @@
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:15%">NIK</th>
+                                                    <th hidden>no_rekam_medis</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -93,15 +108,7 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_pasien)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
+
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_pasien as $row) : ?>
                                                     <tr>
@@ -109,6 +116,7 @@
                                                         <td><?= $row['no_rm']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
                                                         <td><?= $row['nik']; ?></td>
+                                                        <td hidden><?= $row['nomor_rekam_medis']; ?></td>
                                                         <td>
                                                             <?= $row['no_tlp'] ?>
                                                         </td>
@@ -143,7 +151,8 @@
                                                                                     <li class="list-group-item">
                                                                                         <h3><?= $row['nama'] ?></h3>
                                                                                     </li>
-                                                                                    <li class="list-group-item"> No.Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Riwayat : <?= $row['no_rm']; ?></li>
+                                                                                    <li class="list-group-item"> Nomor Rekam Medis : <?= $row['nomor_rekam_medis']; ?></li>
                                                                                     <li class="list-group-item"> NIK : <?= $row['nik'] ?></li>
                                                                                     <li class="list-group-item"> Tanggal Lahir : <?= $row['tanggal_lahir'] ?></li>
                                                                                     <li class="list-group-item"> Umur : <?= $row['umur'] ?></li>
@@ -242,7 +251,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Print By Tanggal</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Print By NIK</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

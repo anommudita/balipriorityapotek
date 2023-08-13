@@ -30,11 +30,24 @@
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
+
+                                            <!-- Data Tidak Ditemukan -->
+                                            <?php if (empty($all_form_pemeriksaan)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data riwayat pemeriksaan tidak ditemukan!
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:20%">Nomor Riwayat</th>
-                                                    <!-- <th hidden>Nomor Rekam Medis</th> -->
+                                                    <th hidden>NIK</th>
                                                     <th style="width:30%">Nama</th>
                                                     <th>Nomor Rekam Medis</th>
                                                     <th>Tanggal Periksa</th>
@@ -45,7 +58,7 @@
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:20%">Nomor Riwayat</th>
-                                                    <!-- <th hidden>Nomor Rekam Medis</th> -->
+                                                    <th hidden>NIK</th>
                                                     <th style="width:30%">Nama</th>
                                                     <th>Nomor Rekam Medis</th>
                                                     <th>Tanggal Periksa</th>
@@ -53,20 +66,12 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_form_pemeriksaan)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_form_pemeriksaan as $row) : ?>
                                                     <tr>
                                                         <td><?= $i++ ?></td>
                                                         <td><?= $row['no_rm']; ?></td>
+                                                        <td hidden><?= $row['nik']; ?></td>
                                                         <td><?= $row['nama_pasien']; ?></td>
                                                         <td>
                                                             <?= $row['no_rekam_medis'] ?>
@@ -81,7 +86,7 @@
                                                                 <?php else : ?>
                                                                     <a href="#" class="btn btn-secondary mr-2 notif-invoice">Print</a>
                                                                 <?php endif; ?>
-                                                            
+
                                                                 <!-- <a href="<?= base_url() ?>dokter/edit_form_pemeriksaan/<?= $row['id']; ?>" class="btn btn-warning mr-2">Edit</a>
                                                                 <a href="<?= base_url(); ?>dokter/hapus_form_pemeriksaan/<?= $row['id']; ?>" class="btn btn-danger delete-form-pemeriksaan" data-id="<?= $row['id']; ?>">Hapus</a> -->
                                                             </div>

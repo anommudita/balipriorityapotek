@@ -16,6 +16,13 @@ class Data_pasien_model extends CI_Model{
         return $this->db->get_where('pasien', ['nik' => $nik])->row_array();
     }
 
+    // get data pasien by nip
+    public function get_data_pasien_by_nip($nip)
+    {
+        $this->db->order_by('no_rekam_medis', 'ASC');
+        return $this->db->get_where('pasien', ['no_rekam_medis' => $nip])->row_array();
+    }
+
 
 
     // get all data data pasien by tanggal

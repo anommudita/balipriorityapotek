@@ -61,12 +61,13 @@
 <script src="<?= base_url('assets/'); ?>vendor/datatables/datatables.js"></script>
 
 
-<!-- Datatables Script -->
-<!-- <script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-</script> -->
+
+<!-- <script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
+
+<!-- 
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script> -->
 
 <!-- sweetalert  -->
 
@@ -111,14 +112,14 @@
 <script>
     $(document).ready(function() {
         // Bind a function to the input event of the NIK field
-        $('#nik').on('input', function() {
-            var nik = $(this).val();
+        $('#nip').on('input', function() {
+            var nip = $(this).val();
             // Make an AJAX request to retrieve historical data
             $.ajax({
                 url: '<?= base_url('admin/get_historical_data'); ?>',
                 method: 'POST',
                 data: {
-                    nik: nik
+                    nip: nip
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -126,6 +127,7 @@
                     if (response.success) {
                         // Populate form fields with historical data
                         $('#nama').val(response.data.nama);
+                        $('#nik').val(response.data.nik);
                         $('#tanggal_lahir').val(response.data.tanggal_lahir);
                         $('#umur').val(response.data.umur);
                         $('#alamat').val(response.data.alamat);
@@ -135,6 +137,7 @@
                     } else {
                         // Clear form fields if no historical data found
                         $('#nama').val('');
+                        $('#nik').val('');
                         $('#tanggal_lahir').val('');
                         $('#umur').val('');
                         $('#alamat').val('');
@@ -199,3 +202,6 @@
         document.getElementById('umur_pasien').value = umurString;
     });
 </script>
+
+
+

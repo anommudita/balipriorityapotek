@@ -19,7 +19,7 @@
         }
 
         .text1 {
-            font-size: 13px;
+            font-size: 11px;
         }
 
         .text2 {
@@ -70,7 +70,7 @@
         <tr>
             <td style="width: 30%;"><img src="<?= $logo; ?>" height="80px" class="logo"></td>
             <td>
-                <h3 style="text-align: center;">FORM PEMERIKSAAN</h3>
+                <h4 style="text-align: center;">FORM PEMERIKSAAN</h4>
                 <h4 style="text-align: center;">BALI PRIORITY APOTEK</h4>
             </td>
         </tr>

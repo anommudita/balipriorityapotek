@@ -330,11 +330,14 @@ $('.notif-pemeriksaan').on('click', function(e){
 });
 
 
-
+// new DataTable('#myTable');
 // mengaktifkan data table
 $('#myTable').DataTable( {
     // paging: false,
     // scrollY: 400
 } );
+
+
+
 
 

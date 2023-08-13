@@ -126,6 +126,17 @@ class Auth extends CI_Controller
 
         $this->load->view('auth/block');
     }
+
+
+    public function not_found()
+    {
+        $username = $this->session->userdata('username');
+        // jika user telah login ubah nilai ke 0
+        $this->db->set('status', 0);
+        $this->db->where('username', $username);
+        $this->db->update('user');
+        $this->load->view('auth/block');
+    }
     
 }
 

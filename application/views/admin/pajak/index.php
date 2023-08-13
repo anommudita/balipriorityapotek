@@ -18,14 +18,25 @@
 
                                         <table class="table table-striped table-bordered" id="myTable" width="100%" cellspacing="0">
 
-
-
                                             <!-- Flashdata! -->
                                             <?php if ($this->session->flashdata('flash')) : ?>
                                                 <div class="col">
                                                     <div class="row mt-2">
                                                         <div class="alert alert-success alert-dismissible fade show" role="alert">Data pajak
                                                             <strong>berhasil</strong> <?= $this->session->flashdata('flash'); ?>
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <!-- Notif Data Tidak Ditemukan -->
+                                            <?php if (empty($all_pajak)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data pajak tidak ditemukan!
                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -50,15 +61,6 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_pajak)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_pajak as $row) : ?>
                                                     <tr>

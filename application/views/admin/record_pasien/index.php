@@ -85,7 +85,18 @@
                                             </div>
                                         <?php endif; ?>
 
-
+                                        <!-- Notif data tidak ditemukan -->
+                                        <?php if (empty($all_pasien)) : ?>
+                                            <div class="col">
+                                                <div class="row mt-2">
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">Data record pasien tidak ditemukan!
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
 
                                         <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                                             <a href="<?= base_url('admin/recordpasien/') ?>" class="btn btn-success mr-3 mb-3">All Data</a>
@@ -99,6 +110,7 @@
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:15%">Nomor Rekam Medis</th>
+                                                    <th hidden>NIK</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -111,6 +123,7 @@
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:15%">Nama</th>
                                                     <th style="width:15%">Nomor Rekam Medis</th>
+                                                    <th hidden>NIK</th>
                                                     <th style="width:10%">No Telepon</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Dokter</th>
@@ -118,15 +131,6 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_pasien)) : ?>
-                                                    <tr>
-                                                        <td colspan="8">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_pasien as $row) : ?>
                                                     <tr>
@@ -134,6 +138,7 @@
                                                         <td><?= $row['no_rm']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
                                                         <td><?= $row['no_rekam_medis']; ?></td>
+                                                        <td hidden><?= $row['nik']; ?></td>
                                                         <td>
                                                             <?= $row['no_tlp'] ?>
                                                         </td>
@@ -302,7 +307,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Print By Tanggal</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Print By Dokter</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

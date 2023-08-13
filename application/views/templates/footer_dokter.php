@@ -1207,6 +1207,8 @@
             var harga_obat5 = $('#harga_obat4').val();
 
             //  jika kosong
+
+
             if (harga_obat2 == '') {
                 harga_obat2 = 0;
             }

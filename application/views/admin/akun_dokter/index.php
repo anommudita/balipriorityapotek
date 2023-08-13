@@ -28,6 +28,19 @@
                                                 </div>
                                             </div>
                                         <?php endif; ?>
+
+                                        <!-- Notif Data Tidak ditemukan -->
+                                        <?php if (empty($all_akun_dokter)) : ?>
+                                            <div class="col">
+                                                <div class="row mt-2">
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">Data akun dokter tidak ditemukan!
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
                                         <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                                             <thead>
                                                 <tr>
@@ -50,15 +63,6 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_akun_dokter)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_akun_dokter as $row) : ?>
                                                     <tr>

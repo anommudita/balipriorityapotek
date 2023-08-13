@@ -76,7 +76,7 @@ class Pasien_model extends CI_Model{
 
     // get data pasien by id_dokter
     public function get_all_data_pasien_by_dokter($username){
-        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin');
+        $this->db->select('record_pasien.id, record_pasien.no_rm, record_pasien.nik, record_pasien.nama, record_pasien.tanggal_lahir, record_pasien.umur, record_pasien.alamat, record_pasien.no_tlp, user.nama as nama_dokter, record_pasien.date_created, record_pasien.jenis_kelamin, record_pasien.nomor_rekam_medis');
         $this->db->from('record_pasien');
         $this->db->join('user', 'record_pasien.dokter = user.id');
         $this->db->where('user.username', $username);
@@ -170,6 +170,7 @@ class Pasien_model extends CI_Model{
         $data = [
             'no_rm' => $this->input->post('no_rm', true),
             'nik' => $this->input->post('nik', true),
+            'nomor_rekam_medis' => $this->input->post('nip', true),
             'nama' => $this->input->post('nama', true),
             'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
             'umur' => $this->input->post('umur', true),
@@ -192,6 +193,7 @@ class Pasien_model extends CI_Model{
 
         $data = [
             'no_rm' => $this->input->post('no_rm', true),
+            'nomor_rekam_medis' => $this->input->post('nip', true),
             'nik' => $this->input->post('nik', true),
             'nama' => $this->input->post('nama', true),
             'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
@@ -239,6 +241,7 @@ class Pasien_model extends CI_Model{
 
         $data = [
             'no_rm' => $this->input->post('no_rm', true),
+            'nomor_rekam_medis' => $this->input->post('nip', true),
             'nik' => $this->input->post('nik', true),
             'nama' => $this->input->post('nama', true),
             'tanggal_lahir' => $this->input->post('tanggal_lahir', true),

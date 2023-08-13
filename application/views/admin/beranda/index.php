@@ -8,6 +8,7 @@
                             <!-- Page Heading -->
                             <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
                                 <h1 class="h3 mb-0 text-gray-800">Beranda</h1>
+                                <a href="<?=base_url('assets/user_manual/')?>role_admin_dokter.pdf" class="btn btn-primary" target="_blank">Buku Panduan Sistem</a>
                             </div>
 
                             <!-- <h1 id="rela-time-clock"></h1>
@@ -193,6 +194,7 @@
                                             </ol>
                                             <p>Catatan :</p>
                                             <p>Jangan lupa untuk memperbaharui aturan penggunaan ketika sistem diperbaiki atau diperbaharui.</p>
+
                                         </div>
                                     </div>
                                 </div>

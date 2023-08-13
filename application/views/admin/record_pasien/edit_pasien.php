@@ -20,13 +20,22 @@
                                     <?= form_error('no_rm', '<small class="text-danger pl-3">', '</small'); ?>
                                 </div>
 
-                                <!-- NIK -->
+                                <!-- NIP -->
                                 <div class="form-group">
-                                    <label for="nik">NIK</label>
-                                    <input type="number" class="form-control" id="nik" name="nik" value="<?= $pasien['nik'] ?>" placeholder="Masukan nomor nik pasien">
+                                    <label for="nip">Nomor Rekam Medis</label>
+                                    <input type="number" class="form-control" id="nip" name="nip" value="<?= $pasien['no_rekam_medis'] ?>" placeholder="Masukan nomor rekam medis pasien">
                                     <!-- notif error -->
-                                    <?= form_error('nik', '<small class="text-danger pl-3">', '</small'); ?>
+                                    <small id="notif" name="notif" class="text-danger pl-1"></small>
+                                    <?= form_error('nip', '<small class="text-danger pl-3">', '</small'); ?>
                                 </div>
+
+                                <!-- nik -->
+                                <div class="form-group">
+                                    <label for="nik" hidden>nik</label>
+                                    <input type="number" class="form-control" id="nik" name="nik" value="<?= $pasien['nik'] ?>" hidden>
+                                    <!-- notif error -->
+                                </div>
+
 
                                 <!-- Nama Lengkap -->
                                 <div class="form-group">
@@ -91,7 +100,7 @@
                                 <!-- Dokter -->
                                 <div class="form-group">
                                     <label for="dokter">Dokter</label>
-                                    <select class="form-control" id="dokter" name="dokter">
+                                    <select class="form-control" id="dokter" name="dokter" require>
 
                                         <?php if ($pasien['id_dokter'] == $dokter_id['id']) : ?>
                                             <?php $isDataDipanggil = true; ?>

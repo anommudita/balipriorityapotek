@@ -38,6 +38,20 @@
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
+
+                                            <!-- Notif Data Tidak Ditemukan -->
+                                            <?php if (empty($all_obat)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data obat tidak ditemukan!
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
@@ -55,15 +69,6 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_obat)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_obat as $row) : ?>
                                                     <tr>
@@ -77,9 +82,6 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-
-
-
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>

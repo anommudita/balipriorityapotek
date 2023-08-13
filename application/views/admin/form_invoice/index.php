@@ -80,6 +80,19 @@
                                                 </div>
                                             <?php endif; ?>
 
+
+                                            <!-- Notif Data Tidak Ditemukan -->
+                                            <?php if (empty($all_form_invoice)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data riwayat invoice tidak ditemukan!
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
@@ -111,15 +124,7 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($all_form_invoice)) : ?>
-                                                    <tr>
-                                                        <td colspan="10">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
+
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($all_form_invoice as $row) : ?>
                                                     <tr>
@@ -311,7 +316,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Print By Tanggal</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Print By Dokter</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

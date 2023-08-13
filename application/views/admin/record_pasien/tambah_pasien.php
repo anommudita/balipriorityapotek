@@ -20,18 +20,25 @@
                                     <?= form_error('no_rm', '<small class="text-danger pl-3">', '</small'); ?>
                                 </div>
 
-                                <!-- NIK -->
+                                <!-- NIP -->
                                 <div class="form-group">
-                                    <label for="nik">NIK</label>
-                                    <input type="number" class="form-control" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Masukan nomor nik pasien">
+                                    <label for="nip">Nomor Rekam Medis</label>
+                                    <input type="number" class="form-control" id="nip" name="nip" value="<?= set_value('nip') ?>" placeholder="Masukan nomor rekam medis pasien">
                                     <!-- notif error -->
-                                    <?= form_error('nik', '<small class="text-danger pl-3">', '</small'); ?>
                                     <small id="notif" name="notif" class="text-danger pl-1"></small>
+                                    <?= form_error('nip', '<small class="text-danger pl-3">', '</small'); ?>
+                                </div>
+
+                                <!-- nik -->
+                                <div class="form-group">
+                                    <label for="nik" hidden>nik</label>
+                                    <input type="number" class="form-control" id="nik" name="nik" value="<?= set_value('nik') ?>" hidden>
+                                    <!-- notif error -->
                                 </div>
 
                                 <!-- Nama Lengkap -->
                                 <div class="form-group">
-                                    <label for="nama">Nama Lengkap</label>
+                                    <label for="nama">Nama Lengkap</label >
                                     <input type="text" class="form-control" id="nama" name="nama" value="<?= set_value('nama') ?>" placeholder="Masukan nama pasien">
                                     <!-- notif error -->
                                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small'); ?>
@@ -84,7 +91,7 @@
                                 <!-- Dokter -->
                                 <div class="form-group">
                                     <label for="dokter">Dokter</label>
-                                    <select class="form-control" id="dokter" name="dokter">
+                                    <select class="form-control" id="dokter" name="dokter" require>
                                         <option value="" id="value_dokter">Pilih..</option>
                                         <?php foreach ($dokter as $row) : ?>
                                             <option value="<?= $row['id']; ?>" data-dokter="<?= $row['id']; ?>"><?= $row['nama']; ?></option>

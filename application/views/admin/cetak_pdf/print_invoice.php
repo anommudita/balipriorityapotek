@@ -63,7 +63,7 @@
         <tr>
             <td style="width: 30%;"><img src="<?= $logo; ?>" height="80px" class="logo"></td>
             <td>
-                <h2 style="text-align: center;">INVOICE</h2>
+                <h4 style="text-align: center;">INVOICE</h4>
                 <h4 style="text-align: center;">BALI PRIORITY APOTEK</h4>
             </td>
         </tr>

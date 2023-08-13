@@ -9,6 +9,10 @@
                             <h1 class="h3 mb-2 text-gray-800 mt-2 mb-3">Antrian Pasien</h1>
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Antrian Pasien</h6>
+                                    <!-- <a href="<?= base_url('dokter/tambah_form_pemeriksaan') ?>" class="btn btn-primary">Tambah</a> -->
+                                </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
@@ -55,7 +59,6 @@
                                                 </div>
                                             <?php endif; ?>
 
-
                                             <!-- Flashdata status -->
                                             <?php if ($this->session->flashdata('flash_status')) : ?>
                                                 <div class="col">
@@ -70,11 +73,25 @@
                                                 </div>
                                             <?php endif; ?>
 
+                                            <!-- Notif Data Tidak Ditemukan -->
+                                            <?php if (empty($pasien_today)) : ?>
+                                                <div class="col">
+                                                    <div class="row mt-2">
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">Data antrian pasien tidak ditemukan!
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <thead>
                                                 <tr>
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:18%">Nama</th>
+                                                    <th hidden>NIK</th>
                                                     <th style="width:18%">Nomor Rekam Medis</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Status</th>
@@ -86,6 +103,7 @@
                                                     <th style="width:5%">No</th>
                                                     <th style="width:18%">Nomor Riwayat</th>
                                                     <th style="width:18%">Nama</th>
+                                                    <th hidden>NIK</th>
                                                     <th style="width:18%">Nomo Rekam Medis</th>
                                                     <th style="width:10%">Tanggal</th>
                                                     <th style="width:10%">Status</th>
@@ -93,21 +111,14 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <?php if (empty($pasien_today)) : ?>
-                                                    <tr>
-                                                        <td colspan="7">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                Data tidak ditemukan!
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
+
                                                 <?php $i = 1; ?>
                                                 <?php foreach ($pasien_today as $row) : ?>
                                                     <tr>
                                                         <td><?= $i++ ?></td>
                                                         <td><?= $row['no_rm']; ?></td>
                                                         <td><?= $row['nama']; ?></td>
+                                                        <td hidden><?= $row['nik']; ?></td>
                                                         <td><?= $row['no_rekam_medis']; ?></td>
                                                         <td><?= $row['date_created']; ?></td>
                                                         <td>

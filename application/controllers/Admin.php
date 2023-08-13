@@ -45,6 +45,8 @@ class Admin extends CI_Controller{
 
         // cek session untuk username
         if (!$this->session->userdata('username')) {
+            // echo 'test1';
+            // die;
             redirect('auth');
         }
 
@@ -836,7 +838,6 @@ class Admin extends CI_Controller{
         // Pembuatan NIP Otomatis
         $data['no_rekam_medis'] =$this->data_pasien->get_nip_otomatis();
 
-
         // NIK Pasien
         $this->form_validation->set_rules(
             'nik_pasien',
@@ -972,8 +973,8 @@ class Admin extends CI_Controller{
 
     // ajax untuk mencari data histori pasien 
     public function get_historical_data(){
-        $nik = $this->input->post('nik');
-        $historical_data = $this->data_pasien->get_data_pasien_by_nik($nik);
+        $nip = $this->input->post('nip');
+        $historical_data = $this->data_pasien->get_data_pasien_by_nip($nip);
         if ($historical_data) {
             echo json_encode(array('success' => true, 'data' => $historical_data));
         } else {
@@ -997,13 +998,13 @@ class Admin extends CI_Controller{
         );
         // NIK Pasien
         $this->form_validation->set_rules(
-            'nik',
-            'Nik',
-            'required|trim|min_length[16]|max_length[16]|numeric',
+            'nip',
+            'Nip',
+            'required|trim|min_length[6]|max_length[6]|numeric',
             [
-                'required' => 'NIK pasien harus disii!',
-                'min_length' => 'NIK pasien harus 16 digit!',
-                'max_length' => 'NIK pasien harus 16 digit!',
+                'required' => 'Nomor rekam medis pasien harus disii!',
+                'min_length' => 'Nomor rekam medis pasien harus 6 digit!',
+                'max_length' => 'Nomor rekam medis pasien harus 6 digit!',
             ]
         );
 
@@ -1065,6 +1066,20 @@ class Admin extends CI_Controller{
             'required|trim',
             [
                 'required' => 'Nomor telepon pasien harus disii!'
+            ]
+        );
+
+
+        // Dokter
+        $this->form_validation->set_rules(
+            'dokter',
+            'Dokter',
+            'required',
+            [
+                'required' => 'Dokter harus disii!',
+                // 'min_length' => 'NIK pasien harus 16 digit!',
+                // 'max_length' => 'NIK pasien harus 16 digit!',
+                // 'is_unique' => 'NIK pasien sudah terdaftar!'
             ]
         );
 
@@ -1098,6 +1113,7 @@ class Admin extends CI_Controller{
 
         // pasien by id
         $data['pasien'] = $this->pasien->get_data_pasien_by_id($id);
+        // var_dump($data['pasien']);
 
         // dokter by id
         $data['dokter_id'] = $this->user->get_data_by_id($data['pasien']['id_dokter']);
@@ -1117,13 +1133,13 @@ class Admin extends CI_Controller{
 
         // NIK Pasien
         $this->form_validation->set_rules(
-            'nik',
-            'Nik',
-            'required|trim|min_length[16]|max_length[16]|numeric',
+            'nip',
+            'Nip',
+            'required|trim|min_length[6]|max_length[6]|numeric',
             [
-                'required' => 'NIK pasien harus disii!',
-                'min_length' => 'NIK pasien harus 16 digit!',
-                'max_length' => 'NIK pasien harus 16 digit!',
+                'required' => 'Nomor rekam medis pasien harus disii!',
+                'min_length' => 'Nomor rekam medis pasien harus 16 digit!',
+                'max_length' => 'Nomor rekam medis pasien harus 16 digit!',
             ]
         );
 
@@ -1186,6 +1202,20 @@ class Admin extends CI_Controller{
                 'required' => 'Nomor telepon pasien harus disii!'
             ]
         );
+
+        // Dokter
+        $this->form_validation->set_rules(
+            'dokter',
+            'Dokter',
+            'required',
+            [
+                'required' => 'Dokter harus disii!',
+                // 'min_length' => 'NIK pasien harus 16 digit!',
+                // 'max_length' => 'NIK pasien harus 16 digit!',
+                // 'is_unique' => 'NIK pasien sudah terdaftar!'
+            ]
+        );
+
 
         if ($this->form_validation->run() == false) {
             // nomer riwayat pasien
